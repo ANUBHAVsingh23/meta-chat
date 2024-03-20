@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>girl1</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Container for buttons */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 400px;
+            left: 0;
+            right: 0;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        /* Button styles */
+        .nav-btn {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Button hover effect */
+        .nav-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Specific styles for buttons */
+        .home-btn {
+            position: relative;
+            top: -390px;
+            left: 2%;
+            transform: translateX(-50%);
+        }
+
+        .prev-btn {
+            order: -1; /* Places the previous button at the leftmost position */
+        }
+
+        .next-btn {
+            order: 1; /* Places the next button at the rightmost position */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                top: auto;
+                bottom: 20px;
+            }
+
+            .nav-btn {
+                margin-bottom: 10px;
+            }
+
+            .iframe-container {
+                margin-top: 0;
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Container for buttons -->
+    <div class="nav-container">
+        <a href="index.html" class="nav-btn home-btn"><i class="fas fa-home"></i></a>
+        <a href="fortnight.html" class="nav-btn prev-btn"><i class="fas fa-arrow-left"></i></a>
+        <a href="drone.html" class="nav-btn next-btn"><i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Embedded Sketchfab iframe -->
+    <div class="iframe-container">
+        <iframe id="view360Iframe" width="1455" height="800" src="https://sketchfab.com/models/96340701c2ed4d37851c7d9109eee9c0/embed?ui_infos=0&amp;ui_watermark=0&amp;ui_help=0&amp;ui_settings=0&amp;ui_inspector=0&amp;ui_annotations=0&amp;ui_stop=0&amp;ui_vr=0&amp;preload=1&amp;autostart=1&amp;ui_hint=2&amp;autospin=0.2">
+        </iframe>
+    </div>
+
+    <!-- Font Awesome script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+
+</html>
