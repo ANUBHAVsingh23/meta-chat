@@ -15,7 +15,7 @@
   />
   <link rel="stylesheet" href="login.css" />
   <link rel="icon" href="Screenshot 2024-03-20 013619.png" />
-  <title> Sign Up</title>
+  <title>Sign Up</title>
 </head>
 <body>
   <div id="left">
@@ -25,14 +25,15 @@
     </div>
     <div class="sign-up">
       <h3>Sign Up</h3>
-      <form>
+      <!-- Add id to the form for easier JavaScript handling -->
+      <form id="signup-form" onsubmit="validateForm(event)">
         <div class="form-field">
           <span class="material-symbols-outlined"> mail </span>
-          <input type="email" placeholder="Your email" required />
+          <!-- Add id to the email input -->
+          <input id="email" type="email" placeholder="Your email" required />
         </div>
         <div class="form-field">
           <span class="material-symbols-outlined"> lock </span>
-          <!-- <span class="material-symbols-outlined">  </span> -->
           <input
             type="password"
             id="password"
@@ -71,31 +72,39 @@
   ></script>
   <script src="login.js"></script>
   <script type="text/javascript">
-    // Function to display timer popup and redirect after 5 seconds
-    function showTimerPopupAndRedirect() {
-      // Create a Toastify notification for the timer popup
-      const toast = Toastify({
-        text: "Redirecting in 5 seconds...",
-        duration: 5000, // 5 seconds duration
-        close: true,
-        gravity: "top", // Display at the top of the screen
-        position: "left", // Display on the left side
-      });
-
-      // Show the Toastify notification
-      toast.showToast();
-
-      // Redirect to home.html after 5 seconds
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 5000); // 5 seconds delay
+    function validateForm(event) {
+      event.preventDefault(); // Prevent form submission
+      // Get form inputs
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Perform validation
+      if (isValidEmail(email) && isValidPassword(password)) {
+        // Redirect to index.html
+        window.location.href = 'index.html';
+      } else {
+        // Display error message
+        Toastify({
+          text: 'Invalid email or password!',
+          duration: 3000,
+          close: true,
+          gravity: 'bottom', // Add this line
+          position: 'center', // Add this line
+          backgroundColor: 'linear-gradient(to right, #EB3349, #F45C43)', // Add this line
+        }).showToast();
+      }
     }
 
-    // Add event listener to the sign-up button
-    const signUpButton = document.querySelector("#sign-up-button");
-    signUpButton.addEventListener("click", showTimerPopupAndRedirect);
+    function isValidEmail(email) {
+      // Simple email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
 
-    // Your existing JavaScript code for password validation and other functionality
+    function isValidPassword(password) {
+      // Validate password length (example)
+      return password.length >= 8;
+    }
   </script>
 </body>
 </html>
